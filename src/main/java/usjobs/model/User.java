@@ -17,6 +17,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name = "user_id")
 	@GeneratedValue
 	private Integer id;
 	
