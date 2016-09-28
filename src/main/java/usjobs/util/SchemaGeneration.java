@@ -18,50 +18,37 @@ public class SchemaGeneration {
 	public static void main( String[] args ) throws IOException {
 
 		// Write the generated schema to a string
-		StringWriter stringWriter = new StringWriter();
-		
-		Map<String, Object> properties = new HashMap<>();
-		
-		properties.put( "javax.persistence.schema-generation.scripts.action", "create" );
-		
-		properties.put( "javax.persistence.schema-generation.scripts.create-target", stringWriter );
-		
-		Persistence.generateSchema( "usjobs", properties );
-		
-		// If there is a command line argument, consider it the output file name
-		BufferedWriter out = null;
-		
-		if ( args.length > 0 ) {
-			
-			out = new BufferedWriter( new FileWriter( args[0] ) );
-		}
+        StringWriter stringWriter = new StringWriter();
+        Map<String, Object> properties = new HashMap<>();
+        properties.put( "javax.persistence.schema-generation.scripts.action",
+            "create" );
+        properties.put(
+            "javax.persistence.schema-generation.scripts.create-target",
+            stringWriter );
+        Persistence.generateSchema( "usjobs", properties );
 
-		// Use Hibernate's SQL formatter to format each statement
-		Formatter formatter = new DDLFormatterImpl();
-		
-		Scanner scanner = new Scanner( stringWriter.toString() );
-		
-		while( scanner.hasNextLine() ) {
-			
-			String line = formatter.format( scanner.nextLine() );
-			
-			System.out.println( line );
-			
-			if ( out != null ) {
-				
-				out.write( line );
+        // If there is a command line argument, consider it the output file name
+        BufferedWriter out = null;
+        if( args.length > 0 )
+            out = new BufferedWriter( new FileWriter( args[0] ) );
+
+        // Use Hibernate's SQL formatter to format each statement
+        Formatter formatter = new DDLFormatterImpl();
+        Scanner scanner = new Scanner( stringWriter.toString() );
+        while( scanner.hasNextLine() )
+        {
+            String line = formatter.format( scanner.nextLine() );
+            System.out.println( line );
+            if( out != null )
+            {
+                out.write( line );
                 out.newLine();
-			}
-			
-			scanner.close();
-			
-			if ( out != null ) {
-				
-				out.close();
-			}
-		}
+            }
+        }
+        scanner.close();
+        if( out != null ) out.close();
 
-		System.exit( 0 );
+        System.exit( 0 );
 	}
 
 }
