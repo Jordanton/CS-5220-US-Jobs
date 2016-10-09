@@ -1,0 +1,22 @@
+{
+  "name": "cs-5220-us-jobs",
+  "version": "1.0.0",
+  "description": "S-5220-US-Jobs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsunthon/CS-5220-US-Jobs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsunthon/CS-5220-US-Jobs/issues"
+  },
+  "homepage": "https://github.com/jsunthon/CS-5220-US-Jobs#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-bower-concat": "^1.0.0"
+  }
+}

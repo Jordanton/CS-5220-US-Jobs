@@ -1,4 +1,13 @@
-S-5220-US-Jobs
+# CS-5220-US-Jobs
+
+## Build the front-end packages
+* Install node: [https://nodejs.org/en/] ([https://nodejs.org/en/])
+* cd into this project's root directory
+* `npm install --only=dev`
+* `npm install -g bower` (mac users prefix this command with `sudo`)
+* `npm install -g grunt-cli` (mac/linux user prefix this command with `sudo`)
+* `bower install`
+* `grunt bower_concat`
 
 ## Overview
 The reason we chose this project is because it will be useful to all college students and job seekers.  We all go to college in the hopes of landing good and high-paying jobs.  Unfortunately, there are too many job websites out there such as Monster and CareerBuilder that mostly contain employment agencies’ listings designed to pool for candidates instead of bonafide employers listing real job openings.  There are just too many unemployed recent college grads.  Therefore, we want to create a website where recent college grads and college students can easily connect with bonafide employers with legit job openings without jumping through hoops.

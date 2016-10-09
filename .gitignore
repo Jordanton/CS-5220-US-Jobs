@@ -1,6 +1,11 @@
 /target/
 /test-output/
-
+src/main/webapp/WEB-INF/bower_components
+src/main/webapp/WEB-INF/css
+src/main/webapp/WEB-INF/js
+src/main/webapp/WEB-INF/fonts
+src/main/webapp/WEB-INF/jsp/*.html
+node_modules/
 /.project
 /.classpath
 /.settings/

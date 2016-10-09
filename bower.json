@@ -1,0 +1,27 @@
+{
+  "name": "cs-5220-us-jobs",
+  "homepage": "https://github.com/jsunthon/CS-5220-US-Jobs",
+  "authors": [
+    "James <jsunthon@gmail.com>"
+  ],
+  "description": "This file describes front end files required for our project.",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootswatch-dist": "3.3.6-yeti",
+    "font-awesome": "fontawesome#^4.6.3",
+    "animate.css": "^3.5.2"
+  },
+  "resolutions": {
+    "jquery": "2.2.4"
+  }
+}
