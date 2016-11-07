@@ -25,46 +25,48 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<form:form modelAttribute="editJob" class="form-horizontal">
+					<form:form id="editJobForm" modelAttribute="editJob"
+						class="form-horizontal">
 						<fieldset>
 							<div class="form-group">
-								<label for="title" class="col-lg-2 control-label">Title</label>
+								<label for="jobTitle" class="col-lg-2 control-label">Title</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="jobTitle"
-										id="title" placeholder="Job Title" />
+										id="jobTitle" name="jobTitle" placeholder="Job Title" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="website" class="col-lg-2 control-label">Website</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="website"
-										id="website" placeholder="Job posting website" />
+										id="website" name="website" placeholder="Job posting website" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="location" class="col-lg-2 control-label">Location</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="location"
-										id="location" placeholder="Job Location" />
+										id="location" name="location" placeholder="Job Location" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="description" class="col-lg-2 control-label">Description</label>
 								<div class="col-lg-10">
 									<form:textarea class="form-control" path="jobDescription"
-										rows="3" id="description" />
+										rows="3" id="jobDescription" name="jobDescription" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="salary" class="col-lg-2 control-label">Salary</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="salary"
-										id="salary" placeholder="Job Salary" />
+										id="salary" name="salary" placeholder="Job Salary" />
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-lg-10 col-lg-offset-2">
-									<button type="reset" class="btn btn-default">Cancel</button>
+									<a href="<c:url value='/user/profile.html' />"
+										class="btn btn-default">Cancel</a>
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
 							</div>
@@ -77,4 +79,7 @@
 </body>
 
 <script src="../js/vendor/bower.js"></script>
+<script
+	src="../bower_components/jquery-validation/dist/additional-methods.js"></script>
+<script src="../js/validate.js"></script>
 </html>

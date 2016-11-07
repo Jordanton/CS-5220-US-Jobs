@@ -54,7 +54,7 @@
 							</c:when>
 							<c:otherwise>
 								<a
-									href="apply.html?jobId=${jobPosting.id }&seekerId=${currentUser.id}"
+									href="apply.html?jobId=${jobPosting.id }"
 									role="button" id="apply" class="btn btn-info"> <i
 									class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp;Apply
 								</a>

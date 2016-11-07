@@ -29,6 +29,7 @@
 				Jobs
 			</a> <a id="favJobs" class="list-group-item" href="#"><i
 				class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Favorited Jobs</a>
+			<a id="notifications" class="list-group-item" href="#"><i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;&nbsp;Notifications</a>
 		</div>
 		<div id="detail" class="col col-md-6">
 			<div id="viewProfileDetail" class="panel panel-info">
@@ -73,13 +74,13 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<form action="editProfile.html" method="post"
+					<form id="editProfileSeeker" action="editProfile.html" method="post"
 						class="form-horizontal">
 						<fieldset>
 							<div class="form-group">
 								<label for="username" class="col-lg-2 control-label">Username</label>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" id="username"
+									<input type="text" class="form-control" id="username" name="username"
 										value="${user.username}" disabled>
 								</div>
 							</div>
@@ -87,8 +88,16 @@
 								<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 								<div class="col-lg-10">
 									<input type="password" name="password" class="form-control"
-										id="inputPassword" value="${user.password }"
+										id="password" value="${user.password }"
 										placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-lg-2 control-label">Confirm Password</label>
+								<div class="col-lg-10">
+									<input type="password" name="confirm_password" class="form-control"
+										id="confirm_password" value=""
+										placeholder="Confirm password">
 								</div>
 							</div>
 							<div class="form-group">
@@ -176,14 +185,15 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<form action="<c:url value='/resume/upload.html' />" method="post"
+					<form id="uploadForm" action="<c:url value='/resume/upload.html' />" method="post"
 						enctype="multipart/form-data">
 						<fieldset>
 							<div class="form-group">
-								<label class="control-label text-primary">Upload a Resume</label>
+								<label class="control-label text-primary">Upload a
+									Resume</label>
 								<div class="input-group">
 									<span class="input-group-addon">PDF, DOC, DOCX Format</span> <input
-										type="file" name="resume" class="form-control"> <span
+										type="file" name="resume" class="form-control" id="resume"> <span
 										class="input-group-btn">
 										<button type="submit" class="btn btn-primary" type="button">
 											<i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;Upload
@@ -294,10 +304,71 @@
 					</div>
 				</div>
 			</div>
+			<div id="notificationsDetail" class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;&nbsp;Manage
+						your Job Posting Notifications
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="panel-body">
+						<form action="editNotifications.html" method="post"
+							class="form-horizontal">
+							<fieldset>
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Contact Sharing</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label> <c:choose>
+													<c:when test="${user.notified }">
+														<input type="radio" checked name="notify" value="true">
+													</c:when>
+													<c:otherwise>
+														<input type="radio" name="notify" value="true">
+													</c:otherwise>
+												</c:choose> Enable
+											</label>
+										</div>
+										<div class="radio">
+											<label> <c:choose>
+													<c:when test="${!user.notified }">
+														<input type="radio" checked name="notify" value="false">
+													</c:when>
+													<c:otherwise>
+														<input type="radio" name="notify" value="false">
+													</c:otherwise>
+												</c:choose> Disable
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="keywords" class="col-lg-2 control-label">Job
+										Keywords</label>
+									<div class="col-lg-10">
+										<input type="text" name="keywords" class="form-control"
+											id="keywords" placeholder="comma separated keywords"
+											value="${user.keywords }">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<button type="submit" class="btn btn-primary">Save</button>
+										<button type="reset" class="btn btn-default">Reset</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
 
 <script src="../js/vendor/bower.js"></script>
+<script src="../bower_components/jquery-validation/dist/additional-methods.js"></script>
 <script src="../js/list-detail.js"></script>
+<script src="../js/validate.js"></script>
 </html>

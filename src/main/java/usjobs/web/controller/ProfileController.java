@@ -67,6 +67,7 @@ public class ProfileController {
     	}
     	
     	if (user.isSeeker()){
+    		models.put("user", (JobSeeker) user);
     		return "profile/job-seeker";
     	}
     	
@@ -146,4 +147,16 @@ public class ProfileController {
 		sessionStatus.setComplete();
 		return "redirect:profile.html?id=" + employerId;
 	}
+		
+	@RequestMapping(value = "/user/editNotifications.html", method = RequestMethod.POST)
+	public String editJobForm(@RequestParam String notify, @RequestParam String keywords) {
+		
+		UserDetails details = Security.getUserDetails();
+    	JobSeeker seeker = (JobSeeker) userDao.getProfileUser(details.getUsername());
+    	seeker.setNotified(Boolean.parseBoolean(notify));
+    	seeker.setKeywords(keywords);
+    	userDao.saveProfileUser(seeker);
+		return "redirect:profile.html?id=" + seeker.getId();
+	}
+	
 }

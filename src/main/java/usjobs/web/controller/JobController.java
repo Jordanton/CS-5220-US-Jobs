@@ -1,12 +1,17 @@
 package usjobs.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import usjobs.model.Application;
 import usjobs.model.JobPosting;
@@ -39,6 +45,9 @@ public class JobController {
 
 	@Autowired
 	private ResumeDao resumeDao;
+	
+    @Autowired 
+    ServletContext context;
 
 	@Autowired
 	private UserDao userDao;
@@ -129,7 +138,7 @@ public class JobController {
 	}
 
 	@RequestMapping(value = "/job/apply.html", method = RequestMethod.GET)
-	public String apply(@RequestParam int jobId, @RequestParam int seekerId, ModelMap models) {
+	public String apply(@RequestParam int jobId, ModelMap models) {
 		Application application = new Application();
 		application.setJobApplied(jobPostingDao.getJobPosting(jobId));
 		User user = userDao.getProfileUser(Security.getUserDetails().getUsername());
@@ -153,5 +162,53 @@ public class JobController {
 		session.setComplete();
 		return "redirect:post.html?jobid=" + application.getJobApplied().getId();
 	}
+	
+	@RequestMapping(value = "/job/uploadResume.html", method = RequestMethod.POST)
+    public String upload( @RequestParam MultipartFile resume, @RequestParam int jobId ) 
+        throws IllegalStateException, IOException {
+        
+        UserDetails details = Security.getUserDetails();
+        
+        User user = userDao.getProfileUser( details.getUsername() );
+        
+        Integer userId = user.getId();
+        
+        File file = new File( getFileDirectory( userId ), 
+                resume.getOriginalFilename() );
+        
+        resume.transferTo( file );
+        
+        if (file.exists()) {
+        	logger.info("file successfully uploaded to path: " + file.getPath());
+        	Resume newResume = new Resume();
+        	newResume.setFilePath(file.getPath());
+        	newResume.setFileName(resume.getOriginalFilename());
+        	newResume.setUser(user);
+        	newResume.setUploadDate(new Date());
+        	resumeDao.saveResume(newResume);
+        } else {
+        	logger.error("failed to upload file: " + file.getPath());
+        }
+        
+        return "redirect:apply.html?jobId=" + jobId;
+    }
+	
+	//duplicate code that's found in resumecontroller as well. refactor later.
+    private File getFileDirectory( Integer userId ) {
 
+        String userPath = ResumeController.fileDir.getPath() + userId;
+        String fullPath = context.getRealPath(userPath);
+        
+        logger.info("User Path: " + userPath);
+        logger.info("Full path: " + fullPath);
+        
+        boolean pathCreated = new File( fullPath ).mkdirs();
+        
+        if (pathCreated) {
+        	logger.info("path created");
+        } else {
+        	logger.info("path not created");
+        }
+        return new File( fullPath );
+    }
 }

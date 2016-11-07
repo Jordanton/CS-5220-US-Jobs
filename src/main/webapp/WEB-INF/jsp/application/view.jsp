@@ -29,7 +29,7 @@
 				<h4>
 					<strong>Name</strong>
 				</h4>
-				<p>${application.firstName }${application.lastName }</p>
+				<p>${application.firstName } ${application.lastName }</p>
 				<h4>
 					<strong>Email</strong>
 				</h4>

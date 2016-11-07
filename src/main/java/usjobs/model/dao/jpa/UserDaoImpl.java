@@ -97,6 +97,15 @@ public class UserDaoImpl implements UserDao  {
 				.setParameter(2, "%" + searchLoc.toUpperCase() + "%")
 				.getResultList();
 	}
+	
+	@Override
+	public List<User> getJobSeekers() {
+		String query = "From User WHERE user_type = :type";
+		return entityManager
+				.createQuery(query, User.class)
+				.setParameter("type", "SEEKER")
+				.getResultList();
+	}
 
 	@Override
 	@Transactional

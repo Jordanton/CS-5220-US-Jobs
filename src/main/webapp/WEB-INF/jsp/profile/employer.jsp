@@ -74,13 +74,13 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<form action="editProfile.html" method="post"
+					<form id="editProfileEmployer" action="editProfile.html" method="post"
 						class="form-horizontal">
 						<fieldset>
 							<div class="form-group">
 								<label for="username" class="col-lg-2 control-label">Username</label>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" id="username"
+									<input type="text" class="form-control" id="username" name="username"
 										value="${user.username}" disabled>
 								</div>
 							</div>
@@ -88,8 +88,16 @@
 								<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 								<div class="col-lg-10">
 									<input type="password" name="password" class="form-control"
-										id="inputPassword" value="${user.password }"
+										id="password" value="${user.password }"
 										placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-lg-2 control-label">Confirm Password</label>
+								<div class="col-lg-10">
+									<input type="password" name="confirm_password" class="form-control"
+										id="confirm_password" value=""
+										placeholder="Confirm password">
 								</div>
 							</div>
 							<div class="form-group">
@@ -183,42 +191,42 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<form:form modelAttribute="newJob" class="form-horizontal"
+					<form:form id="addJobForm" modelAttribute="newJob" class="form-horizontal"
 						action="addJob.html?employerId=${user.id}" method="post">
 						<fieldset>
 							<div class="form-group">
-								<label for="title" class="col-lg-2 control-label">Title</label>
+								<label for="jobTitle" class="col-lg-2 control-label">Title</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="jobTitle"
-										id="title" placeholder="Job Title" />
+										id="jobTitle" name="jobTitle" placeholder="Job Title" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="website" class="col-lg-2 control-label">Website</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="website"
-										id="website" placeholder="Job posting website" />
+										id="website" name="website" placeholder="Job posting website" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="location" class="col-lg-2 control-label">Location</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="location"
-										id="location" placeholder="Job Location" />
+										id="location" name="location" placeholder="Job Location" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="description" class="col-lg-2 control-label">Description</label>
 								<div class="col-lg-10">
 									<form:textarea class="form-control" path="jobDescription"
-										rows="3" id="description" />
+										rows="3" id="jobDescription" name="jobDescription" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="salary" class="col-lg-2 control-label">Salary</label>
 								<div class="col-lg-10">
 									<form:input type="text" class="form-control" path="salary"
-										id="salary" placeholder="Job Salary" />
+										id="salary" name="salary" placeholder="Job Salary" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -287,5 +295,7 @@
 </body>
 
 <script src="../js/vendor/bower.js"></script>
+<script src="../bower_components/jquery-validation/dist/additional-methods.js"></script>
 <script src="../js/list-detail.js"></script>
+<script src="../js/validate.js"></script>
 </html>

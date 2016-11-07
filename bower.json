@@ -19,7 +19,8 @@
     "jquery": "2.2.4",
     "bootswatch-dist": "3.3.6-yeti",
     "font-awesome": "fontawesome#^4.6.3",
-    "animate.css": "^3.5.2"
+    "animate.css": "^3.5.2",
+    "jquery-validation": "^1.15.1"
   },
   "resolutions": {
     "jquery": "2.2.4"

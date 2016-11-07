@@ -79,7 +79,7 @@ public class User implements Serializable {
     @Column(name = "phone")
     @OrderBy("phone asc")
     private List<String> phones;
-
+    
     public User() {
         
         enabled = true;

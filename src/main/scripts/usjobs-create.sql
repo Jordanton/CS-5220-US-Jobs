@@ -111,6 +111,8 @@ create sequence hibernate_sequence minvalue 80;
         employer_website varchar(255),
         current_job_title varchar(255),
         experience text,
+        is_notified boolean,
+        keywords varchar(255),
         primary key (user_id)
     );
 
@@ -200,20 +202,20 @@ create sequence hibernate_sequence minvalue 80;
     insert into users (user_type, user_id, city, state, street,
                        zip, email, enabled, first_name,
                        last_name, password, reported, username,
-                       current_job_title, experience, supress_contact) values
+                       current_job_title, experience, supress_contact, is_notified, keywords) values
                       ('SEEKER', 1, 'New Brunswick', 'NJ', '467 Durham Court',
                        '08901', 'loc.truong@testemail.com', true, 'Loc',
                        'Truong', 'password@1', false, 'loc',
-                       'Software Engineering', '4 years', false);
+                       'Software Engineering', '4 years', false, true, 'engineer, assistant, accountant');
 
     insert into users (user_type, user_id, city, state, street,
                        zip, email, enabled, first_name,
                        last_name, password, reported, username,
-                       current_job_title, experience, supress_contact) values
+                       current_job_title, experience, supress_contact, is_notified, keywords) values
                       ('SEEKER', 2, 'Henderson', 'KY', '398 Augusta Drive',
                        '42420', 'steve.shim@testemail.com', true, 'Steve',
                        'Shim', 'password@1', false, 'steve',
-                       'Software Engineering', '5 years', false);
+                       'Software Engineering', '5 years', false, true, 'receptionist, taxi, driver');
 
     insert into users (user_type, user_id, city, state, street,
                        zip, email, enabled, first_name,

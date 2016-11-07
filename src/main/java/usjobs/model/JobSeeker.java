@@ -45,6 +45,14 @@ public class JobSeeker extends User implements Serializable {
 
 	@OneToMany(mappedBy = "userPosted", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<EmployerReview> employersReviewed;
+	
+    /* indicates if job seeker should be notified of new, relevant job listings. */
+    @Column(name = "is_notified")
+    private boolean notified;
+    
+    /* For job seeker, keywords is a comma-separated string*/
+    private String keywords; 
+    
 
 	public List<JobPosting> getAppliedJobs() {
 		return appliedJobs;
@@ -117,4 +125,23 @@ public class JobSeeker extends User implements Serializable {
 	public void setApplications(List<Application> applications) {
 		this.applications = applications;
 	}
+
+	
+	public boolean isNotified() {
+		return notified;
+	}
+
+	public void setNotified(boolean notified) {
+		this.notified = notified;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+	
+	
 }
