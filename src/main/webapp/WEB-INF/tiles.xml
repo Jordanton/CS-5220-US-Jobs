@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="home" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="US-Jobs Home" />
+		<put-attribute name="content" value="/WEB-INF/jsp/home.jsp" />
+	</definition>
+	<definition name="login" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
+	</definition>
+	
+	<definition name="login-error" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="content" value="/WEB-INF/jsp/login-error.jsp" />
+	</definition>
+	
+	<definition name="register" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Register" />
+		<put-attribute name="content" value="/WEB-INF/jsp/register.jsp" />
+	</definition>
+	
+	<definition name="application/view" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Application" />
+		<put-attribute name="content" value="/WEB-INF/jsp/application/view.jsp" />
+	</definition>
+	<definition name="application/job-applications" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Applications" />
+		<put-attribute name="content" value="/WEB-INF/jsp/application/job-applications.jsp" />
+	</definition>
+	<definition name="job/list" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Posting Magement" />
+		<put-attribute name="content" value="/WEB-INF/jsp/job/list.jsp" />
+	</definition>
+	
+	<definition name="job/view" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Posting" />
+		<put-attribute name="content" value="/WEB-INF/jsp/job/view.jsp" />
+	</definition>
+	
+	<definition name="job/post" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Posting" />
+		<put-attribute name="content" value="/WEB-INF/jsp/job/post.jsp" />
+	</definition>
+	
+	<definition name="job/apply" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Application" />
+		<put-attribute name="content" value="/WEB-INF/jsp/job/apply.jsp" />
+	</definition>
+	
+	<definition name="job/edit" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Edit" />
+		<put-attribute name="content" value="/WEB-INF/jsp/job/edit.jsp" />
+	</definition>
+	
+	<definition name="profile/admin" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Admin Page" />
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/admin.jsp" />
+	</definition>
+
+	<definition name="profile/employer" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Employer Page" />
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/employer.jsp" />
+	</definition>
+	
+	<definition name="profile/job-seeker" template="/WEB-INF/jsp/template.jsp">
+		<put-attribute name="title" value="Job Seeker Page" />
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/job-seeker.jsp" />
+	</definition>
+	
+	
+    <definition name="user/list" template="/WEB-INF/jsp/template.jsp">
+        <put-attribute name="title" value="Users" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/list.jsp" />
+    </definition>
+
+    <definition name="user/view" template="/WEB-INF/jsp/template.jsp">
+        <put-attribute name="title" value="View User" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/view.jsp" />
+    </definition>
+
+    <definition name="user/add" template="/WEB-INF/jsp/template.jsp">
+        <put-attribute name="title" value="Add User" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/add.jsp" />
+    </definition>
+
+    <definition name="user/edit" template="/WEB-INF/jsp/template.jsp">
+        <put-attribute name="title" value="Edit User" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user/edit.jsp" />
+    </definition>
+
+
+
+</tiles-definitions>

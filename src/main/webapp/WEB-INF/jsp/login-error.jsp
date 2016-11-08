@@ -4,12 +4,17 @@
 
 <div class="animated fadeIn row">
 	<div class="col-md-4 col-md-offset-4">
+		<div class="alert alert-dismissible alert-danger">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><i class="fa fa-exclamation-triangle"
+				aria-hidden="true"></i>&nbsp;&nbsp;Error.</strong> You've entered the wrong
+			username or password. Please try again.
+		</div>
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					<i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Login
 				</h3>
-
 			</div>
 			<div class="panel-body">
 				<form id="loginForm" action="<c:url value='/login' />" method="post"

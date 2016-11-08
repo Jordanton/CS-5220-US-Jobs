@@ -4,21 +4,9 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>US Jobs - Applications</title>
-<link href="<c:url value='/css/vendor/bower.css' />" rel="stylesheet" />
-<link href="<c:url value='/css/us-jobs.css' />" rel="stylesheet" />
-<link
-	href="<c:url value='/bower_components/font-awesome/css/font-awesome.css' />"
-	rel="stylesheet" />
-<script src="<c:url value='/js/vendor/bower.js' />"></script>
-</head>
-<body>
-	<jsp:include page="../header.jsp" />
-	<div class="animated fadeIn col col-md-8 col-md-offset-2">
+
+<div class="animated fadeIn row">
+	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">
@@ -50,38 +38,46 @@
 									data-toggle="modal" data-target="#coverLetter">
 									<i class="fa fa-share-square-o" aria-hidden="true"></i>&nbsp;&nbsp;View
 								</button></td>
-							<td><a
-								href="<c:url value='/resume/download.html?resumeId=${application.resume.id}' />"
-								role="button" class="btn btn-primary"><i
-									class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</a></td>
+							<td><c:choose>
+									<c:when test="${empty application.resume.id }">
+										<p class="text-danger">This resume has been removed.</p>
+									</c:when>
+									<c:otherwise>
+										<a
+											href="<c:url value='/resume/download.html?resumeId=${application.resume.id}' />"
+											role="button" class="btn btn-primary"><i
+											class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Download</a>
+									</c:otherwise>
+								</c:choose></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
 	</div>
-	<div id="coverLetter" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title url">Cover Letter</h4>
-				</div>
-				<div class="modal-body">
-					<p id="coverLetterText"></p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">
-						Close</button>
-				</div>
+</div>
+
+<div id="coverLetter" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title url">Cover Letter</h4>
+			</div>
+			<div class="modal-body">
+				<p id="coverLetterText"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					Close</button>
 			</div>
 		</div>
 	</div>
-	<script>
-		function initModal(object) {
-			var coverLetter = $(object).prev().html(); //hacky solution.
-			$("#coverLetterText").html(coverLetter);
-		}
-	</script>
-</body>
-</html>
+</div>
+
+<script>
+	function initModal(object) {
+		var coverLetter = $(object).prev().html(); //hacky solution.
+		$("#coverLetterText").html(coverLetter);
+	}
+</script>

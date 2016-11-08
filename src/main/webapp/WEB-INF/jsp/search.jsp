@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<div class="row">
-	<div class="col col-md-8 col-md-offset-2">
+<div class="animated fadeIn row">
+	<div class="col-md-8 col-md-offset-2">
 		<c:choose>
 		<c:when test="${empty searchResultJob && empty searchResultUser && empty searchResultSeeker}">
 			<h1 class="text-warning">No results found.</h1>

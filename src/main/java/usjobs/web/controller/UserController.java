@@ -148,7 +148,7 @@ public class UserController {
         // Create a new user
         models.put( "user", new User() );
 
-        return "/register";
+        return "register";
     }
 
     @RequestMapping(value = "/register.html", method = RequestMethod.POST)
